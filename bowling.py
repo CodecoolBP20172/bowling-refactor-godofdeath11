@@ -10,7 +10,7 @@ def score(game):
         if frame < 10 and get_value(game[string_index]) == 10:
             if game[string_index] == '/':
                 result += get_value(game[string_index+1])
-            elif game[string_index] == 'X' or game[string_index] == 'x':
+            elif game[string_index] in "xX":
                 result += get_value(game[string_index+1])
                 if game[string_index+2] == '/':
                     result += 10 - get_value(game[string_index+1])
@@ -23,7 +23,7 @@ def score(game):
             half_number = 2
         else:
             half_number = 1
-        if game[string_index] == 'X' or game[string_index] == 'x':
+        if game[string_index] in "xX":
             half_number = 1
             frame += 1
     return result
@@ -32,7 +32,7 @@ def score(game):
 def get_value(value):
     if value.isnumeric():
         return int(value)
-    elif value == 'X' or value == 'x' or value == '/':
+    elif value in "Xx/":
         return 10
     elif value == '-':
         return 0
